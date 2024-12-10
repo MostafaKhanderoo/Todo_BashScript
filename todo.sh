@@ -19,8 +19,8 @@ echo $Todo_FILE
 }
 
  add_task() {
-            read -p "write new task" task
-            echo "$task" >> $TODO_FILE
+            read -p "write new task: " task
+            echo "$task" >> $Todo_FILE
             echo "task added."
         }
 
@@ -29,10 +29,10 @@ echo $Todo_FILE
      echo "2)delete of done list"
      read -p "choose: " choice
      if [ "$choice" -eq 1 ]; then
-     sed -i "/$(select_task $TODO_FILE)/d" $TODO_FILE
+     sed -i "/$(select_task $Todo_FILE)/d" $Todo_FILE
      echo "task delete...."
      elif [ "$choice" -eq 2 ]; then
-     sed -i "/$(select_task $DONE_FILE)/d" $DONE_FILE
+     sed -i "/$(select_task $Done_FILE)/d" $Done_FILE
                 echo "task delete...."
         else
                 echo "invalid number.."
@@ -40,12 +40,26 @@ echo $Todo_FILE
                 }
   view_all_task() {
             echo "todo list..."
-            cat -n $TODO_FILE
+            cat -n $Todo_FILE
             echo "done list..."
-            cat -n $DONE_FILE
+            cat -n $Done_FILE
         }
   select_task() {
             cat -n "$1"
             read -p "choose number of task" num
             sed -n "${num}p" "$1"
         }
+
+
+        while true; do
+            show_menu
+        read -p "choose a number: " option
+        case $option in
+        1) add_task ;;
+        2) delete_task ;;
+        3) view_all_task ;;
+        4) search_tasks ;;
+        5) exit ;;
+        *) echo "invalid number...." ;;
+        esac
+                done
