@@ -38,3 +38,9 @@ echo $Todo_FILE
                 echo "invalid number.."
                     fi
                 }
+  view_all_task() {
+            echo "todo list..."
+            cat -n $TODO_FILE
+            echo "done list..."
+            cat -n $DONE_FILE
+        }
