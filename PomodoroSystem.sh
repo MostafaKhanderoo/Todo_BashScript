@@ -1,10 +1,10 @@
 #!/bin/bash
 
 
-read -p "entre a number of test work " sessions
+read -p "entre a number of test work " number
 
 
-for ((i=1; i<=sessions; i++)); do
+for ((i=1; i<=number; i++)); do
   echo "start number  $i..."
   sleep 10
   echo "finished number $i."
