@@ -23,3 +23,18 @@ echo $Todo_FILE
             echo "$task" >> $TODO_FILE
             echo "task added."
         }
+
+      delete_task() {
+     echo "1) delete of todo list"
+     echo "2)delete of done list"
+     read -p "choose: " choice
+     if [ "$choice" -eq 1 ]; then
+     sed -i "/$(select_task $TODO_FILE)/d" $TODO_FILE
+     echo "task delete...."
+     elif [ "$choice" -eq 2 ]; then
+     sed -i "/$(select_task $DONE_FILE)/d" $DONE_FILE
+                echo "task delete...."
+        else
+                echo "invalid number.."
+                    fi
+                }
