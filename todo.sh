@@ -3,12 +3,11 @@
 
 Todo_FILE="todo.txt"
 Done_FILE="done.txt"
-
-echo $Todo_FILE
+4
 
  show_menu() {
   echo "-------------------------"
-  echo "ToDo Management"
+  echo "ToDo"
   echo "1) add new task"
   echo "2) delete task"
   echo "3) view all task"
@@ -29,9 +28,11 @@ echo $Todo_FILE
      echo "2)delete of done list"
      read -p "choose: " choice
      if [ "$choice" -eq 1 ]; then
+         cat -n $Todo_FILE
      sed -i "/$(select_task $Todo_FILE)/d" $Todo_FILE
      echo "task delete...."
      elif [ "$choice" -eq 2 ]; then
+        cat -n $Done_FILE
      sed -i "/$(select_task $Done_FILE)/d" $Done_FILE
                 echo "task delete...."
         else
@@ -49,7 +50,13 @@ echo $Todo_FILE
             read -p "choose number of task" num
             sed -n "${num}p" "$1"
         }
-
+search_tasks() {
+  read -p "keyword search" keyword
+  echo "todo list..."
+  grep --color=always "$keyword" $Todo_FILE
+  echo "done list..."
+  grep --color=always "$keyword" $Done_FILE
+}
 
         while true; do
             show_menu
