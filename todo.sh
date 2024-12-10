@@ -44,3 +44,8 @@ echo $Todo_FILE
             echo "done list..."
             cat -n $DONE_FILE
         }
+  select_task() {
+            cat -n "$1"
+            read -p "choose number of task" num
+            sed -n "${num}p" "$1"
+        }
