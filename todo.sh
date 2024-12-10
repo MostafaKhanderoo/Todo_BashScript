@@ -17,3 +17,9 @@ echo $Todo_FILE
   echo "-------------------------"
   echo "tsst "
 }
+
+ add_task() {
+            read -p "write new task" task
+            echo "$task" >> $TODO_FILE
+            echo "task added."
+        }
